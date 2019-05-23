@@ -4,7 +4,17 @@ import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.css";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(
+  <React.Fragment>
+    <main role="main" class="container">
+      <div className="starter-template">
+        Redux App <br />
+        <App />
+      </div>
+    </main>
+  </React.Fragment>,
+  document.getElementById("root")
+);
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

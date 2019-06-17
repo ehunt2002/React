@@ -11,8 +11,9 @@ ReactDOM.render(
     <React.Fragment>
       <main role="main" className="container">
         <div className="starter-template">
-          <p className="font-weight-bolder">ReactRedux Test App - 1 </p>
-          <br />
+          <p className="font-weight-bolder text-info">
+            ReactRedux Test App - 1{" "}
+          </p>
           <br />
           <App />
         </div>

@@ -1,7 +1,7 @@
 import { Component } from "react";
 import React from "react";
 import { connect } from "react-redux";
-import { addNumber, subtractNumber } from "./actions/mathActions";
+import { addNumber, subtractNumber, grabJsonFeed } from "./actions/mathActions";
 
 import "./App.css";
 
@@ -25,6 +25,12 @@ class App extends Component {
         >
           Subtract Number
         </button>
+        <button
+          className="btn btn-warning"
+          onClick={() => this.props.grabJsonFeed()}
+        >
+          GET JSON
+        </button>
       </div>
     );
   }
@@ -43,6 +49,9 @@ const mapDispatchToProps = dispatch => {
     },
     subtractNumber: num => {
       dispatch(subtractNumber(num));
+    },
+    grabJsonFeed: () => {
+      dispatch(grabJsonFeed());
     }
   };
 };

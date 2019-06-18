@@ -1,18 +1,73 @@
-@import "~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss";
+@import "~office-ui-fabric-react/dist/sass/_References.scss";
 
 /* Custom CSS Starts Here*/
-.leftbox {
-  float: left;
-
-  width: 25%;
-  height: 180px;
+.mainGrid {
+  @include ms-Grid;
+  @include ms-borderColor-themePrimary;
+  border: 0px solid;
+  margin: 1em;
+  padding: 1em;
 }
 
-.rightbox {
-  float: right;
+.mainGridrow {
+  @include ms-Grid-row;
+}
 
-  width: 25%;
-  height: 180px;
+.mainGridcol1 {
+  @include ms-Grid-col;
+  @include ms-sm2;
+  @include ms-md8;
+  @include ms-lg6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 0px solid;
+  text-align: center;
+  @include ms-borderColor-themeSecondary;
+}
+
+.mainGridcol2 {
+  @include ms-Grid-col;
+  @include ms-sm2;
+  @include ms-md8;
+  @include ms-lg6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 0px solid;
+  text-align: center;
+  @include ms-borderColor-themeSecondary;
+}
+
+.mainGridTable {
+  @include ms-Grid-col;
+  @include ms-sm12;
+}
+
+.customers {
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.customers td,
+.customers th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.customers tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.customers tr:hover {
+  background-color: #ddd;
+}
+
+.customers th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: $ms-color-themeDark;
+  color: white;
 }
 
 /* Custom CSS End Here */

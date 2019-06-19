@@ -5,6 +5,13 @@ import { escape } from "@microsoft/sp-lodash-subset";
 import { UsageData, IUsageData } from "../components/UsageData";
 import { LibUsageQuota, ILibUsageData } from "../components/LibUsageQuota";
 
+const ConvertBytestToGB = bytes => {
+  var i = Math.floor(Math.log(bytes) / Math.log(1024));
+  var sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+
+  return parseInt((bytes / Math.pow(1024, i)).toFixed(2)) * 1 + " " + sizes[i];
+};
+
 const SampleTable = props => {
   return (
     <table className={styles.customers}>
@@ -52,11 +59,16 @@ export default class SiteUsageApp extends React.Component<
   public render(): React.ReactElement<ISiteUsageAppProps> {
     return (
       <div>
-        <h3>Site Quota Usage</h3>
+        <h3>Total Site Quota: {ConvertBytestToGB("10737418240")}</h3>
         <div className={styles.mainGrid} dir="ltr">
           <div className={styles.mainGridrow}>
             <div className={styles.mainGridcol2}>
-              <UsageData AssignedQuota={10000} UsedQuota={3000} />
+              <UsageData
+                AssignedQuota={10737418240}
+                UsedQuota={478645670}
+                AssignedLabelText={ConvertBytestToGB("10737418240")}
+                UsedLabelText={ConvertBytestToGB("478645670")}
+              />
             </div>
             <div className={styles.mainGridcol2}>
               <LibUsageQuota AssignedQuota={10000} UsedQuota={3000} />

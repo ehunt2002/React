@@ -1,12 +1,6 @@
 import * as React from "react";
 import { Pie } from "react-chartjs-2";
-
-const ConvertBytestToGB = bytes => {
-  var i = Math.floor(Math.log(bytes) / Math.log(1024));
-  var sizes = ["B", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
-
-  return parseInt((bytes / Math.pow(1024, i)).toFixed(2)) * 1 + " " + sizes[i];
-};
+import { ConvertBytestToGB } from "../loc/CustomUtil";
 
 export interface IUsageData {
   AssignedQuota: number;

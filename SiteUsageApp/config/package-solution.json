@@ -3,7 +3,7 @@
   "solution": {
     "name": "site-usage-app-client-side-solution",
     "id": "ae628fd2-1e7c-438e-8db4-f06eda2ca836",
-    "version": "1.0.0.0",
+    "version": "1.0.0.12",
     "includeClientSideAssets": true
   },
   "paths": {

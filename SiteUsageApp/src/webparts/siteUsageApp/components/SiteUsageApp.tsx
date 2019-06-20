@@ -216,7 +216,7 @@ export default class SiteUsageApp extends React.Component<
           <div className={styles.mainGridrow}>
             <div className={styles.mainGridcol2}>
               <h3>
-                Total Site Quota:{" "}
+                Total Site Quota:
                 {toReadableBytes(this.state.SiteUsageDetails.AssignedQuota)}
               </h3>
               <UsageData
@@ -263,7 +263,7 @@ export default class SiteUsageApp extends React.Component<
       <table className={styles.customers}>
         <tr>
           <th>Library Name</th>
-          <th>Space Used per Site Quota</th>
+          <th colSpan={2}>Space Used per Site Quota</th>
           <th>Site Quota</th>
         </tr>
         {this.state.items.map((item, key) => {
@@ -275,6 +275,8 @@ export default class SiteUsageApp extends React.Component<
                   value={item.TotalSize}
                   max={this.state.SiteUsageDetails.AssignedQuota}
                 />
+              </td>
+              <td>
                 <div className={styles.progressBar}>
                   {toReadableBytes(item.TotalSize)}
                 </div>

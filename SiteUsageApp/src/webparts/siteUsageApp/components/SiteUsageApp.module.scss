@@ -7,6 +7,7 @@
   border: 0px solid;
   margin: 1em;
   padding: 1em;
+  color: #0078d4;
 }
 
 .mainGridrow {
@@ -40,6 +41,8 @@
 .mainGridTable {
   @include ms-Grid-col;
   @include ms-sm12;
+  margin-top: 40px;
+  text-align: center;
 }
 
 .customers {
@@ -47,27 +50,46 @@
   border-collapse: collapse;
   width: 100%;
 }
-
+customers th {
+  color: white;
+}
 .customers td,
 .customers th {
   border: 1px solid #ddd;
   padding: 8px;
 }
-
+.customers tr {
+  color: black;
+}
+.customers tr:hover {
+  /*background: linear-gradient(#efeae6, #f9b84a);
+  box-shadow: inset 0 0 45px 1px #db7224;
+  box-shadow: 0 0 0px 5px rgba(0, 0, 0, 0);
+  transform: scale(1.04) translateY(-5px);
+  z-index: 1;
+  border-bottom: 0 none;*/
+  background-color: #ddd;
+}
 .customers tr:nth-child(even) {
   background-color: #f2f2f2;
-}
-
-.customers tr:hover {
-  background-color: #ddd;
 }
 
 .customers th {
   padding-top: 12px;
   padding-bottom: 12px;
-  text-align: left;
+  text-align: center;
   background-color: $ms-color-themeDark;
   color: white;
+}
+.progressBar {
+  float: right;
+  margin-right: 30px;
+  /* margin-left: -200px;*/
+}
+
+.barChartDesc {
+  font-size: 10px;
+  text-align: right;
 }
 
 /* Custom CSS End Here */

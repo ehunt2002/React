@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Pie } from "react-chartjs-2";
-import { ConvertBytestToGB } from "../loc/CustomUtil";
+import { toReadableBytes } from "../loc/CustomUtil";
 
 export interface IUsageData {
   AssignedQuota: number;
@@ -31,7 +31,7 @@ const PieChart = props => {
           var readableBytes = "";
           var datasetindex = 0;
           console.log(dat.datasets[datasetindex].data[tooltipItem.index]);
-          readableBytes = ConvertBytestToGB(
+          readableBytes = toReadableBytes(
             dat.datasets[datasetindex].data[tooltipItem.index]
           );
 

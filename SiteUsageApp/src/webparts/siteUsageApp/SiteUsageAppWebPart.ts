@@ -1,27 +1,29 @@
-import * as React from 'react';
-import * as ReactDom from 'react-dom';
-import { Version } from '@microsoft/sp-core-library';
+import * as React from "react";
+import * as ReactDom from "react-dom";
+import { Version } from "@microsoft/sp-core-library";
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
   PropertyPaneTextField
-} from '@microsoft/sp-webpart-base';
+} from "@microsoft/sp-webpart-base";
 
-import * as strings from 'SiteUsageAppWebPartStrings';
-import SiteUsageApp from './components/SiteUsageApp';
-import { ISiteUsageAppProps } from './components/ISiteUsageAppProps';
+import * as strings from "SiteUsageAppWebPartStrings";
+import SiteUsageApp from "./components/SiteUsageApp";
+import { ISiteUsageAppProps } from "./components/ISiteUsageAppProps";
 
 export interface ISiteUsageAppWebPartProps {
   description: string;
 }
 
-export default class SiteUsageAppWebPart extends BaseClientSideWebPart<ISiteUsageAppWebPartProps> {
-
+export default class SiteUsageAppWebPart extends BaseClientSideWebPart<
+  ISiteUsageAppWebPartProps
+> {
   public render(): void {
-    const element: React.ReactElement<ISiteUsageAppProps > = React.createElement(
+    const element: React.ReactElement<ISiteUsageAppProps> = React.createElement(
       SiteUsageApp,
       {
-        description: this.properties.description
+        description: this.properties.description,
+        siteurl: this.context.pageContext.web.absoluteUrl
       }
     );
 
@@ -33,7 +35,7 @@ export default class SiteUsageAppWebPart extends BaseClientSideWebPart<ISiteUsag
   }
 
   protected get dataVersion(): Version {
-    return Version.parse('1.0');
+    return Version.parse("1.0");
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -47,7 +49,7 @@ export default class SiteUsageAppWebPart extends BaseClientSideWebPart<ISiteUsag
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
+                PropertyPaneTextField("description", {
                   label: strings.DescriptionFieldLabel
                 })
               ]

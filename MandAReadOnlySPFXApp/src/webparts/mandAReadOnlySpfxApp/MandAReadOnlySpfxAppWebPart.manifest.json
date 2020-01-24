@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "25008f1e-571d-4f33-808c-e860e50d26ec",
+  "alias": "MandAReadOnlySpfxAppWebPart",
+  "componentType": "WebPart",
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "MandAReadOnlySPFXApp"
+      },
+      "description": {
+        "default": "MandAReadOnlySPFXApp description"
+      },
+      "officeFabricIconFontName": "Page",
+      "properties": {
+        "ownersgroup": "Developer Site Owners",
+        "policylist": "Project%20Policy%20Item%20List",
+        "azurefunction": "https://cprd-fa-prod-int-westus2-sharepointautomation.azurewebsites.net/",
+        "azurefunctionname": "SetReadOnly",
+        "policyname": "Read-only",
+        "azurefunctionid": "app-id-here-from-azure-app-reg"
+      }
+    }
+  ]
+}

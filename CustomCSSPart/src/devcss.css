@@ -1,0 +1,51 @@
+.CanvasZone {
+    max-width: 100% !important;
+  }
+  
+div[class^="detailsListContainer"] {
+    background-color: transparent!important;
+  }
+
+div[class^="webPartHeader"] {
+    background-color:  #32a0d3!important;
+    padding-left: 8px;
+    padding-right:8px;
+    padding-top: 8px;
+    font-weight: bold!important;
+  }
+
+div[class^="headerRow"] {
+    background-color:  #32a0d3!important;
+  }
+
+a[class^="title"] {
+    color: white!important;
+  }
+
+  div[class^="captionElement"] span{
+    color: white!important; 
+    font-weight:700;
+    font-size:medium!important;
+    text-align:center;
+ }
+ 
+div[class^="ms-List-page"] {
+  background-color:aliceblue
+}
+
+a[class^="shyTitle"] {
+  color:white!important;
+  font-weight:500!important;
+}
+
+div[class^="actionsSubcell"] > .ms-Button > span {
+  color:white!important;
+}
+
+div[class^="actionsSubcell"] > .ms-Button > span > i {
+  color:white!important;
+}
+
+body{
+  background-color: aquamarine;
+}

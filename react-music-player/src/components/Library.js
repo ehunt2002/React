@@ -1,22 +1,37 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LibrarySong from '../components/LibrarySong';
-import "@fortawesome/fontawesome-svg-core";
-import { faMusic } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWindowClose, faWindowRestore } from "@fortawesome/free-solid-svg-icons";
 
-function Library({ songs }) {
+
+function Library({ songs, audioRef, isPlaying, setIsPlaying, setCurrentSong }) {
+
+    const [libraryOpen, setLibraryOpen] = useState(true);
+
+    const libraryOpenHandler = (e) => {
+        if (libraryOpen) {
+            setLibraryOpen(false);
+        }
+        else {
+            setLibraryOpen(false);
+        }
+    }
 
     return (
         <>
-            <div className="library">
+            <FontAwesomeIcon size="1x" icon={faWindowRestore} onClick={libraryOpenHandler} className="openLibrary"></FontAwesomeIcon>
+            Open Library
+            <div className={`library ${libraryOpen ? '' : 'close'}`}>
 
                 <div className="library-title">
-                    <faMusic size="1x" icon={faMusic}></faMusic>   My Songs Library
+                    My Songs Library
+                    <FontAwesomeIcon size="1x" icon={faWindowClose} onClick={libraryOpenHandler}></FontAwesomeIcon>
                 </div>
                 <div className="library-songs">
                     {
                         songs.map(song =>
                             <LibrarySong
-                                songInfo={song}>
+                                songInfo={song} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} setCurrentSong={setCurrentSong}>
                             </LibrarySong>
                         )
                     }

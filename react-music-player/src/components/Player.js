@@ -1,10 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPlay, faAngleRight, faAngleLeft, faPause } from "@fortawesome/free-solid-svg-icons";
-import { useRef, useState } from "react"
+import { faPlay, faAngleRight, faAngleLeft, faPause, faVolumeUp, faVolumeMute } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react"
 
-const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
-
-    const audioRef = useRef(null);
+const Player = ({ currentSong, isPlaying, setIsPlaying, songInfo, setCurrentSong, audioRef, setSongInfo }) => {
 
     const playsongHandler = () => {
         if (isPlaying) {
@@ -17,22 +15,6 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
         }
     }
 
-    //State 
-    const [songInfo, setSongInfo] = useState({
-        currentTime: 0,
-        duration: 0
-    });
-
-    const timeUpdateHandler = (e) => {
-        const currentTime = e.target.currentTime;
-        const duration = e.target.duration;
-
-        setSongInfo({
-            ...songInfo,
-            currentTime,
-            duration
-        })
-    }
 
     const getTime = (time) => {
 
@@ -48,11 +30,52 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
 
     }
 
+    const dragVolumeHandler = (e) => {
+        let volValue = e.target.value;
+
+        if (volValue < 10) {
+            audioRef.current.volume = 0;
+        }
+        else if (volValue < 20) {
+            audioRef.current.volume = .1;
+        }
+        else if (volValue < 30) {
+            audioRef.current.volume = .2;
+        }
+        else if (volValue < 40) {
+            audioRef.current.volume = .3;
+        }
+        else if (volValue < 50) {
+            audioRef.current.volume = .4;
+        }
+        else if (volValue < 60) {
+            audioRef.current.volume = .5;
+        }
+        else if (volValue < 70) {
+            audioRef.current.volume = .6;
+        }
+        else if (volValue < 80) {
+            audioRef.current.volume = .7;
+        }
+        else if (volValue < 90) {
+            audioRef.current.volume = .8;
+        }
+        else if (volValue < 100) {
+            audioRef.current.volume = .9;
+        }
+        else if (volValue < 110) {
+            audioRef.current.volume = 1;
+        }
+    }
+
     return (
         <div className="player">
             <div className="time-control">
                 <p>{getTime(songInfo.currentTime)}</p>
                 <input onChange={dragHandler} min={0} max={songInfo.duration} value={songInfo.currentTime} type="range" ></input>
+                <FontAwesomeIcon icon={faVolumeMute}></FontAwesomeIcon>
+                <input onChange={dragVolumeHandler} min={0} type="range" max={100} className="volControl"></input>
+                <FontAwesomeIcon icon={faVolumeUp}></FontAwesomeIcon>
                 <p>{getTime(songInfo.duration)}</p>
             </div>
 
@@ -61,7 +84,7 @@ const Player = ({ currentSong, isPlaying, setIsPlaying }) => {
                 <FontAwesomeIcon size="2x" icon={isPlaying ? faPause : faPlay} className="play" onClick={playsongHandler}></FontAwesomeIcon>
                 <FontAwesomeIcon size="1x" icon={faAngleRight} className="skip-forward"></FontAwesomeIcon>
             </div>
-            <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} src={currentSong.audio} ref={audioRef}></audio>
+
         </div>
 
     );

@@ -29,14 +29,14 @@ function App() {
    const moviesResp = await fetch(SEARCH_API+searchTerm);
    const moviesR = await moviesResp.json();
    console.log(moviesR);
-   setMovies(moviesR);
+   setMovies(moviesR.data.movies);
    }
    else
    {
     const moviesResp = await fetch(FEATURED_API);
     const moviesR = await moviesResp.json();
     console.log(moviesR);
-    setMovies(moviesR);
+    setMovies(moviesR.data.movies);
    }
 
   };
